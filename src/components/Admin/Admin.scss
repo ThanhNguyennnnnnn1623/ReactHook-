@@ -1,8 +1,24 @@
 .admin-container {
     display: flex;
-    .admin-sidebar{
-        .pro-sidebar{
+
+    .admin-sidebar {
+        .pro-sidebar {
             height: 100vh !important;
+        }
+    }
+
+    .admin-content {
+        width: 100%;
+        .admin-header {
+            height: 40px;
+            border: 1px solid greenyellow;
+        }
+
+        .admin-main {
+            .user-pagination{
+                display: flex;
+                justify-content: center;
+            }
         }
     }
 }

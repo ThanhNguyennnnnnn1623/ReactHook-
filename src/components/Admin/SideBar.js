@@ -9,11 +9,12 @@ import {
     SidebarContent,
 } from 'react-pro-sidebar';
 
-import { FaTachometerAlt, FaGem, FaList, FaGithub, FaRegLaughWink, FaHeart} from 'react-icons/fa';
-import sidebarBg from '../../assets/bg2.jpg';
+import { FaTachometerAlt, FaGem, FaList, FaGithub, FaRegLaughWink, FaHeart } from 'react-icons/fa';
+import sidebarBg from '../../assets/bg1.png';
 import { IoLogoReact } from "react-icons/io5";
 import { MdDashboard } from "react-icons/md";
-import './SideBar.scss'
+import './SideBar.scss';
+import { Link } from 'react-router-dom';
 
 
 
@@ -41,7 +42,7 @@ const SideBar = (props) => {
                             whiteSpace: 'nowrap',
                         }}
                     >
-                        <IoLogoReact size={'2em'} color={'00bfff'}/>
+                        <IoLogoReact size={'2em'} color={'00bfff'} />
                         <span>Thanh Nguyen</span>
                     </div>
                 </SidebarHeader>
@@ -52,6 +53,7 @@ const SideBar = (props) => {
                             icon={<MdDashboard />}
                         >
                             Dashboard
+                            <Link to={'/admin'} />
                         </MenuItem>
                     </Menu>
                     <Menu iconShape="circle">
@@ -59,7 +61,10 @@ const SideBar = (props) => {
                             icon={<FaGem />}
                             title='Features'
                         >
-                            <MenuItem> Quản lý Users</MenuItem>
+                            <MenuItem>
+                                Quản lý Users
+                                <Link to={'/admin/manage-users'} />
+                            </MenuItem>
                             <MenuItem> Quản lý bài Quiz</MenuItem>
                             <MenuItem> Quản lý câu hỏi</MenuItem>
                         </SubMenu>
