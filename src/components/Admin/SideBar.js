@@ -14,12 +14,13 @@ import sidebarBg from '../../assets/bg1.png';
 import { IoLogoReact } from "react-icons/io5";
 import { MdDashboard } from "react-icons/md";
 import './SideBar.scss';
-import { Link } from 'react-router-dom';
+import { Link, useNavigate } from 'react-router-dom';
 
 
 
 const SideBar = (props) => {
     const { image, collapsed, toggled, handleToggleSidebar } = props;
+    const navigate = useNavigate();
     return (
         <>
             <ProSidebar
@@ -43,7 +44,9 @@ const SideBar = (props) => {
                         }}
                     >
                         <IoLogoReact size={'2em'} color={'00bfff'} />
-                        <span>Thanh Nguyen</span>
+                        <span onClick={() => navigate('/')} style={{cursor: 'pointer'}}>
+                            Thanh Nguyen
+                        </span>
                     </div>
                 </SidebarHeader>
 
@@ -65,8 +68,12 @@ const SideBar = (props) => {
                                 Quản lý Users
                                 <Link to={'/admin/manage-users'} />
                             </MenuItem>
-                            <MenuItem> Quản lý bài Quiz</MenuItem>
-                            <MenuItem> Quản lý câu hỏi</MenuItem>
+                            <MenuItem> Quản lý bài Quiz
+                                <Link to={'/admin/manage-quizzes'} />
+                            </MenuItem>
+                            <MenuItem> Quản lý câu hỏi
+                                <Link to={'/admin/manage-questions'} />
+                            </MenuItem>
                         </SubMenu>
                     </Menu>
                 </SidebarContent>
