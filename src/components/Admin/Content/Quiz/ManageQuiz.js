@@ -5,6 +5,8 @@ import { postCreateNewQuiz } from '../../../../Service/apiService';
 import { toast } from 'react-toastify';
 import TableQuiz from './TableQuiz';
 import Accordion from 'react-bootstrap/Accordion';
+import QuizQA from './QuizQA';
+import AssignQuizz from './AssignQuiz';
 
 const options = [
     { value: 'EASY', label: 'EASY' },
@@ -17,6 +19,7 @@ const ManageQuiz = (props) => {
     const [description, setDescription] = useState('');
     const [type, setType] = useState('');
     const [image, setImage] = useState(null);
+
 
     const handleChangeFile = (event) => {
         if (event.target && event.target.files && event.target.files[0]) {
@@ -40,6 +43,7 @@ const ManageQuiz = (props) => {
         } else {
             toast.error(res.EM)
         }
+
     }
     return (
         <div className="quiz-container">
@@ -93,12 +97,29 @@ const ManageQuiz = (props) => {
                                 </div>
                             </fieldset>
                         </div>
+                        <div className="list-detail">
+                            <TableQuiz />
+                        </div>
+                    </Accordion.Body>
+                </Accordion.Item>
+                <Accordion.Item eventKey="1">
+                    <Accordion.Header>Update Q/A Quizzes</Accordion.Header>
+                    <Accordion.Body>
+                        <QuizQA
+
+                        />
+                    </Accordion.Body>
+                </Accordion.Item>
+                <Accordion.Item eventKey="2">
+                    <Accordion.Header>Assign to users</Accordion.Header>
+                    <Accordion.Body>
+                        <AssignQuizz
+
+                        />
                     </Accordion.Body>
                 </Accordion.Item>
             </Accordion>
-            <div className="list-detail">
-                <TableQuiz />
-            </div>
+
         </div>
     )
 }
