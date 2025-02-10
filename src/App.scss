@@ -9,6 +9,12 @@ body {
   -moz-osx-font-smoothing: grayscale;
 }
 
+.languages {
+  .dropdown-toggle::after {
+    display: none !important;
+  }
+}
+
 @media (min-width: 1500px) {
 
   .container,
@@ -22,6 +28,34 @@ body {
 
 .app-container {
   .header-container {
+    .logo-360 {
+      width: 30px;
+      height: 30px;
+      color: rgb(245, 125, 185);
+      -webkit-animation: spin 4s linear infinite;
+      -moz-animation: spin 4s linear infinite;
+      animation: spin 4s linear infinite;
+    }
+
+    @-moz-keyframes spin {
+      100% {
+        -moz-transform: rotate(360deg);
+      }
+    }
+
+    @-webkit-keyframes spin {
+      100% {
+        -webkit-transform: rotate(360deg);
+      }
+    }
+
+    @keyframes spin {
+      100% {
+        -webkit-transform: rotate(360deg);
+        transform: rotate(360deg);
+      }
+    }
+
     .btn-login {
       border-radius: 5px;
       margin-right: 15px;
@@ -94,7 +128,8 @@ body {
       }
     }
   }
-  .app-content{
+
+  .app-content {
     height: calc(100vh - 60px);
   }
 }

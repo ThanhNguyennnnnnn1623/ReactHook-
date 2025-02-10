@@ -1,0 +1,10 @@
+{
+        "homepage": {
+            "title1": "Make forms worth filling out",
+            "title2": "Get more data—like signups, feedback, and anything else—with forms designed to be refreshingly different.",
+            "title3": {
+                "login": "Get started—it's free",
+                "quiz": "Doing quiz now"
+            }
+        }
+}

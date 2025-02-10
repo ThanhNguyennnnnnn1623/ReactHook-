@@ -1,10 +1,14 @@
 import videoHomePage from '../../assets/video-homepage.mp4'
 import { useSelector } from 'react-redux';
 import { useNavigate } from 'react-router-dom';
+import { useTranslation, Trans } from 'react-i18next';
+
 
 const HomePage = (props) => {
     const isAuthenticated = useSelector(state => state.user.isAuthenticated);
-    const navigate = useNavigate()
+    const navigate = useNavigate();
+    const { t } = useTranslation();
+
     return (
         <div className="homepage-container">
             <video autoPlay loop muted>
@@ -15,17 +19,21 @@ const HomePage = (props) => {
             </video>
             <div className='homepage-content'>
                 <div className='title-1'>
-                    Make forms worth filling out
+                    {t('homepage.title1')}
                 </div>
                 <div className='title-2'>
-                    Get more data—like signups, feedback, and anything else—with forms designed to be refreshingly different.
+                    {t('homepage.title2')}
                 </div>
                 <div className='title-3'>
                     {
                         isAuthenticated === false ?
-                            <button onClick={() => navigate('/')}>Get started—it's free</button>
+                            <button onClick={() => navigate('/')}>
+                                {t('homepage.title3.login')}
+                            </button>
                             :
-                            <button onClick={() => navigate('/users')}>Doing quiz now</button>
+                            <button onClick={() => navigate('/users')}>
+                                {t('homepage.title3.quiz')}
+                            </button>
 
                     }
                 </div>

@@ -8,6 +8,11 @@ const ModalResult = (props) => {
 
     const handleClose = () => setShow(false);
 
+    const handleShowAnswer = () => {
+        handleClose();
+        props.setIsShowAnswer(true);
+    }
+
     return (
         <>
             <Modal
@@ -23,7 +28,7 @@ const ModalResult = (props) => {
                     <div>Total Correct answers: <b>{dataModalResult.countCorrect}</b></div>
                 </Modal.Body>
                 <Modal.Footer>
-                    <Button variant="secondary" onClick={handleClose}>
+                    <Button variant="secondary" onClick={() => handleShowAnswer()}>
                         Show answers
                     </Button>
                     <Button variant="primary"

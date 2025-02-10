@@ -131,7 +131,7 @@ function ModalUpdateUser(props) {
                                 <option value='ADMIN'>ADMIN</option>
                             </select>
                         </div>
-                        <div classNameName='col-md-12'>
+                        <div className='col-md-12'>
                             <label className="form-label label-upload" htmlFor='labelUpload'>
                                 <FcPlus />
                                 Upload file Image

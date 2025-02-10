@@ -98,7 +98,40 @@ const getQuizWithQA = (quizId) => {
 }
 
 const postUpsertQA = (data) => {
-    return axios.post(`api/v1/quiz-upsert-qa`, {...data})
+    return axios.post(`api/v1/quiz-upsert-qa`, { ...data })
+}
+
+const logOut = (email, refresh_token) => {
+    return axios.post('api/v1/logout', {
+        email, refresh_token
+    });
+}
+
+const getOverView = () => {
+    return axios.get('api/v1/overview');
+}
+
+const refreshToken = (email, refresh_token) => {
+    return axios.post('api/v1/refresh-token', {
+        email, refresh_token
+    });
+}
+
+const putUpdateUserInfo = (username, image) => {
+    const data = new FormData();
+    data.append('username', username);
+    data.append('userImage', image);
+    return axios.post('api/v1/profile', data);
+}
+
+const changePassword = (current_password, new_password) => {
+    return axios.post('api/v1/change-password', {
+        current_password, new_password
+    });
+}
+
+const getHistory = () => {
+    return axios.get('api/v1/history');
 }
 
 
@@ -108,5 +141,6 @@ export {
     getDataQuiz, postSubmitQuiz, postCreateNewQuiz, getAllQuizForAdmin,
     putUpdateQuizForAdmin, deleteQuizForAdmin, postCreateNewQuestionForQuiz,
     postCreateNewAnswerForQuestion, postAssignQuiz, getQuizWithQA,
-    postUpsertQA
+    postUpsertQA, logOut, getOverView, refreshToken, putUpdateUserInfo,
+    changePassword, getHistory
 }

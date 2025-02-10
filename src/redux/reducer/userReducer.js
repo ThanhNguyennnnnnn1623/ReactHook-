@@ -1,13 +1,17 @@
 
 import { INCREMENT, DECREMENT } from '../action/counterAction';
 import { FETCH_USER_LOGIN_SUCCESS } from '../action/userAction';
+import { USER_LOGOUT_SUCCESS } from '../action/userAction';
+import { UPDATE_ACCESS_TOKEN } from '../action/userAction';
+import { UPDATE_PROFILE } from '../action/userAction';
 const INITIAL_STATE = {
     account: {
         access_token: '',
         refresh_token: '',
         username: '',
         image: '',
-        role: ''
+        role: '',
+        email: ''
     },
     isAuthenticated: false
 };
@@ -16,20 +20,47 @@ const userReducer = (state = INITIAL_STATE, action) => {
         case FETCH_USER_LOGIN_SUCCESS:
             console.log('check action: ', action)
             return {
-                ...state, 
+                ...state,
                 account: {
                     access_token: action?.payload?.DT?.access_token,
                     refresh_token: action?.payload?.DT?.refresh_token,
                     username: action?.payload?.DT?.username,
                     image: action?.payload?.DT?.image,
-                    role: action?.payload?.DT?.role
+                    role: action?.payload?.DT?.role,
+                    email: action?.payload?.DT?.email,
                 },
                 isAuthenticated: true
             };
 
-        case DECREMENT:
+        case USER_LOGOUT_SUCCESS:
             return {
-                ...state, count: state.count - 1,
+                ...state,
+                account: {
+                    access_token: '',
+                    refresh_token: '',
+                    username: '',
+                    image: '',
+                    role: '',
+                    email: ''
+                },
+                isAuthenticated: false
+            };
+        case UPDATE_ACCESS_TOKEN:
+            return {
+                ...state,
+                account: {
+                    ...state.account,
+                    access_token: action?.payload?.DT?.access_token,
+                    refresh_token: action?.payload?.DT?.refresh_token
+                }
+            };
+        case UPDATE_PROFILE:
+            return {
+                ...state,
+                account: {
+                    ...state.account,
+                    username: action?.payload?.DT?.username,
+                }
             };
         default: return state;
     }
